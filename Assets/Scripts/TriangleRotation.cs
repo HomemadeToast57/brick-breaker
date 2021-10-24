@@ -4,7 +4,7 @@ using System.Collections;
 public class TriangleRotation : MonoBehaviour
 {
 
-    public float degreesPerSec = 360f;
+    public float degreesPerSec = 90f;
 
     void Start()
     {

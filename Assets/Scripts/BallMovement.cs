@@ -7,6 +7,7 @@ public class BallMovement : MonoBehaviour
 
     public bool inPlay;
     public float speed;
+    public Transform paddle;
     public Transform ballPosition;
     private Rigidbody2D rb;
     public float timerSeconds = 5;
@@ -39,25 +40,25 @@ public class BallMovement : MonoBehaviour
         if (!inPlay && Input.GetButtonDown("Jump"))
         {
             inPlay = true;
-            rb.velocity = new Vector2(rb.position.x, rb.position.y) * speed * Time.deltaTime;
+            rb.velocity = new Vector2(speed * paddle.transform.position.x * Time.deltaTime, speed * paddle.transform.position.y * Time.deltaTime);
         }
-        if (inPlay)
-        {
-            if (secondsTillPull > 0)
-            {
-                secondsTillPull -= Time.deltaTime;
-                //Debug.Log((int)secondsTillPull);
-            }
-            else if (secondsTillPull < 0)
-            {
-                //Do countdown stuff here
+        //if (inPlay)
+        //{
+        //    if (secondsTillPull > 0)
+        //    {
+        //        secondsTillPull -= Time.deltaTime;
+        //        //Debug.Log((int)secondsTillPull);
+        //    }
+        //    else if (secondsTillPull < 0)
+        //    {
+        //        //Do countdown stuff here
 
-                Debug.Log("Countdown Complete!");
-                rb.velocity = new Vector2(ballPosition.position.x - rb.position.x, ballPosition.position.y - rb.position.y) * speed * Time.deltaTime;
+        //        Debug.Log("Countdown Complete!");
+        //        rb.velocity = new Vector2(ballPosition.position.x - rb.position.x, ballPosition.position.y - rb.position.y) * speed * Time.deltaTime;
 
-                secondsTillPull = timerSeconds;
-            }
-        }
+        //        secondsTillPull = timerSeconds;
+        //    }
+        //}
 
     }
 
